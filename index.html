@@ -105,6 +105,27 @@ p:last-child{margin-bottom:0;}
 .feature h3{color:var(--ink);}
 .feature p{font-size:15px; color:var(--muted); margin:0;}
 
+/* compare vago/direto */
+.compare-list{display:flex; flex-direction:column; gap:14px;}
+.compare-pair{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+@media (max-width:640px){.compare-pair{grid-template-columns:1fr;}}
+.compare-side{
+  border-radius:12px; padding:16px 18px; border:1px solid var(--line);
+}
+.compare-side.vago{background:var(--surface); opacity:.7;}
+.compare-side.claro{background:var(--accent-soft); border-color:transparent;}
+.compare-label{
+  display:block; font-family:var(--sans); font-size:11px; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase; margin-bottom:8px;
+}
+.compare-side.vago .compare-label{color:var(--muted);}
+.compare-side.claro .compare-label{color:var(--accent-ink);}
+.compare-side p{
+  font-family:var(--serif); font-size:15.5px; margin:0; color:var(--ink);
+}
+
 /* tips list */
 .tip-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;}
 .tip-list li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:16px;}
@@ -156,6 +177,7 @@ kbd{
     <div class="navlinks">
       <a href="#comecar">Começar</a>
       <a href="#tela">A tela</a>
+      <a href="#pedir">Como pedir</a>
       <a href="#recursos">Recursos</a>
       <a href="#cuidados">Cuidados</a>
       <a href="#duvidas">Dúvidas</a>
@@ -239,6 +261,50 @@ kbd{
       <li>Se a resposta não ficou boa, não precisa recomeçar — diga o que quer diferente na mesma conversa: "mais curto", "mais formal", "troca esse trecho".</li>
       <li>A conversa lembra o que foi dito antes, dentro do mesmo chat. Se abrir um chat novo, ele não sabe o que foi falado no outro.</li>
       <li>Quanto mais contexto você der (pra quem é, pra que serve, qual tom), melhor a resposta.</li>
+    </ul>
+  </section>
+
+  <section id="pedir">
+    <span class="section-tag">Como pedir</span>
+    <h2>Quanto mais direto, melhor a resposta</h2>
+    <p>Não precisa ser educada demais nem escrever um textão de explicação. O Claude responde melhor quando você diz claramente <b>o que quer</b>, <b>pra que serve</b> e <b>como quer o resultado</b> — de resto, pode ser direta.</p>
+    <div class="compare-list">
+      <div class="compare-pair">
+        <div class="compare-side vago">
+          <span class="compare-label">Vago</span>
+          <p>"me ajuda com um texto"</p>
+        </div>
+        <div class="compare-side claro">
+          <span class="compare-label">Direto</span>
+          <p>"escreve uma mensagem de 3 frases avisando que vou chegar 20 min atrasada na consulta, tom educado"</p>
+        </div>
+      </div>
+      <div class="compare-pair">
+        <div class="compare-side vago">
+          <span class="compare-label">Vago</span>
+          <p>"resume isso"</p>
+        </div>
+        <div class="compare-side claro">
+          <span class="compare-label">Direto</span>
+          <p>"resume esse PDF em 5 pontos, focando em valores e datas"</p>
+        </div>
+      </div>
+      <div class="compare-pair">
+        <div class="compare-side vago">
+          <span class="compare-label">Vago</span>
+          <p>"não ficou bom"</p>
+        </div>
+        <div class="compare-side claro">
+          <span class="compare-label">Direto</span>
+          <p>"deixa mais curto e tira o tom formal"</p>
+        </div>
+      </div>
+    </div>
+    <ul class="tip-list" style="margin-top:24px;">
+      <li>Diga pra quem é e pra que serve — muda o resultado ("pra minha chefe", "pra postar no grupo da família").</li>
+      <li>Se já sabe o formato, peça direto: tamanho, tom, lista ou texto corrido.</li>
+      <li>Não saiu bom? Não precisa reescrever tudo — corrija na mesma conversa: "mais curto", "tira essa parte", "troca o tom".</li>
+      <li>Pedir demais de uma vez confunde. Se o pedido tem várias partes, pode dividir em mensagens.</li>
     </ul>
   </section>
 
