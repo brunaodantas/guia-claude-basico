@@ -175,6 +175,15 @@ kbd, code{
 }
 
 /* atalhos / comandos */
+.cmd-warning{
+  background:var(--pink-soft); border-left:4px solid var(--pink); border-radius:10px;
+  padding:16px 20px; margin:18px 0 16px;
+}
+.cmd-warning-label{
+  display:block; font-family:var(--sans); font-size:11px; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--pink); margin-bottom:8px;
+}
+.cmd-warning p{font-size:15px; margin:0; color:var(--ink);}
 .cmd-example{
   background:var(--surface); border:1px solid var(--line); border-radius:12px;
   padding:16px 20px; margin:18px 0 24px;
@@ -441,7 +450,10 @@ kbd, code{
   <section id="comandos">
     <span class="section-tag">Atalhos prontos</span>
     <h2>100 frases-modelo pra usar no dia a dia</h2>
-    <p>Não são botões nem comando real do Claude — são frases prontas, um lembrete rápido do que pedir. Troca o que está entre <code>[colchetes]</code> pelo seu conteúdo e cola na caixa de texto, como uma mensagem normal.</p>
+    <div class="cmd-warning">
+      <span class="cmd-warning-label">Importante</span>
+      <p>Isso <b>não são botões nem comando real do Claude</b> — são frases prontas, um lembrete rápido do que pedir. Troca o que está entre <code>[colchetes]</code> pelo seu conteúdo e cola na caixa de texto, como uma mensagem normal.</p>
+    </div>
     <div class="cmd-example">
       <span class="compare-label">Exemplo</span>
       <p>Copia <code>/RESUMIR [email]</code>, troca <code>[email]</code> pelo texto do e-mail que você quer resumir, e envia.</p>
