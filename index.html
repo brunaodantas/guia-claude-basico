@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia básico: primeiros passos com o Claude</title>
+<meta name="description" content="Um guia simples para começar a usar o Claude, passo a passo.">
+<style>
+:root{
+  --bg:#F6F5F0;
+  --surface:#FFFFFF;
+  --ink:#1F2420;
+  --muted:#666C5F;
+  --line:#E1DED4;
+  --accent:#2F6F5E;
+  --accent-soft:#E4EFEA;
+  --accent-ink:#1D4C40;
+  --sans: -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --mono: ui-monospace, "SF Mono", "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#161A17; --surface:#1D2220; --ink:#EBEDE9; --muted:#9AA298;
+    --line:#2C3330; --accent:#6FBFA8; --accent-soft:#1F2E29; --accent-ink:#BFE9DB;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#161A17; --surface:#1D2220; --ink:#EBEDE9; --muted:#9AA298;
+  --line:#2C3330; --accent:#6FBFA8; --accent-soft:#1F2E29; --accent-ink:#BFE9DB;
+}
+:root[data-theme="light"]{
+  --bg:#F6F5F0; --surface:#FFFFFF; --ink:#1F2420; --muted:#666C5F;
+  --line:#E1DED4; --accent:#2F6F5E; --accent-soft:#E4EFEA; --accent-ink:#1D4C40;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--serif); font-size:17px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent-ink);}
+.wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+
+/* nav */
+.topnav{
+  position:sticky; top:0; z-index:5; backdrop-filter:blur(6px);
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  border-bottom:1px solid var(--line);
+}
+.topnav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 24px; gap:16px;
+}
+.brand{
+  font-family:var(--sans); font-weight:800; font-size:15px; letter-spacing:-.01em;
+  color:var(--ink); text-decoration:none;
+}
+.navlinks{display:flex; gap:20px; font-family:var(--sans); font-size:13px;}
+.navlinks a{color:var(--muted); text-decoration:none; font-weight:600;}
+.navlinks a:hover{color:var(--accent-ink);}
+@media (max-width:640px){.navlinks{display:none;}}
+
+/* hero */
+.hero{padding:72px 0 56px; border-bottom:1px solid var(--line);}
+.eyebrow{
+  font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase;
+  color:var(--accent-ink); font-weight:600; display:block; margin-bottom:14px;
+}
+h1{
+  font-family:var(--sans); font-weight:800; font-size:clamp(32px,5vw,46px);
+  margin:0 0 16px; letter-spacing:-.02em; text-wrap:balance; line-height:1.1;
+}
+.lede{
+  font-family:var(--serif); font-size:19px; color:var(--muted); max-width:56ch; margin:0;
+}
+
+section{padding:52px 0; border-bottom:1px solid var(--line);}
+section:last-of-type{border-bottom:none;}
+.section-tag{
+  font-family:var(--mono); font-size:12px; color:var(--accent-ink);
+  text-transform:uppercase; letter-spacing:.06em; margin:0 0 10px; display:block;
+}
+h2{
+  font-family:var(--sans); font-weight:800; font-size:26px; margin:0 0 18px;
+  letter-spacing:-.01em; text-wrap:balance;
+}
+h3{
+  font-family:var(--sans); font-weight:700; font-size:15px; margin:0 0 6px;
+}
+p{margin:0 0 14px; max-width:66ch;}
+p:last-child{margin-bottom:0;}
+
+/* steps (sequential) */
+.steps{display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface);}
+.step{display:grid; grid-template-columns:52px 1fr; gap:18px; padding:22px 24px; border-bottom:1px solid var(--line);}
+.step:last-child{border-bottom:none;}
+.step-num{
+  font-family:var(--sans); font-weight:800; font-size:20px; color:var(--accent);
+}
+.step p{font-family:var(--serif); font-size:16px; color:var(--ink);}
+
+/* feature grid (not sequential -> cards, no numbers) */
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+@media (max-width:640px){.grid{grid-template-columns:1fr;}}
+.feature{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:22px 24px;
+}
+.feature h3{color:var(--ink);}
+.feature p{font-size:15px; color:var(--muted); margin:0;}
+
+/* tips list */
+.tip-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:14px;}
+.tip-list li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:16px;}
+.tip-list li::before{content:"·"; font-family:var(--sans); font-weight:800; color:var(--accent);}
+
+/* care callout */
+.care{
+  background:var(--accent-soft); border-radius:12px; padding:24px 26px;
+}
+.care h2{color:var(--accent-ink);}
+.care ul{margin:0; padding-left:20px;}
+.care li{margin-bottom:10px; font-size:16px;}
+.care li:last-child{margin-bottom:0;}
+
+/* faq */
+.faq{display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface);}
+details{border-bottom:1px solid var(--line);}
+details:last-child{border-bottom:none;}
+summary{
+  font-family:var(--sans); font-weight:700; font-size:15.5px; padding:18px 22px;
+  cursor:pointer; list-style:none; position:relative; color:var(--ink);
+}
+summary::-webkit-details-marker{display:none;}
+summary::after{
+  content:"+"; position:absolute; right:22px; top:16px; font-size:20px; color:var(--accent);
+  font-family:var(--sans);
+}
+details[open] summary::after{content:"–";}
+details[open] summary{color:var(--accent-ink);}
+.faq-a{padding:0 22px 20px; font-size:15.5px; color:var(--muted); max-width:64ch;}
+
+footer{padding:40px 0 60px;}
+footer p{font-family:var(--sans); font-size:13px; color:var(--muted);}
+kbd{
+  font-family:var(--mono); font-size:13px; background:var(--accent-soft);
+  color:var(--accent-ink); padding:2px 7px; border-radius:5px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <a class="brand" href="#top">guia · claude</a>
+    <div class="navlinks">
+      <a href="#comecar">Começar</a>
+      <a href="#tela">A tela</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#cuidados">Cuidados</a>
+      <a href="#duvidas">Dúvidas</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero" id="top">
+    <span class="eyebrow">Guia básico · primeiros passos</span>
+    <h1>Bem-vinda ao Claude</h1>
+    <p class="lede">Um guia curto pra você entender o que é o Claude e começar a usar sem enrosco. Sem termo técnico, sem pressa.</p>
+  </header>
+
+  <section id="oque">
+    <span class="section-tag">O que é</span>
+    <h2>Um assistente pra conversar por texto</h2>
+    <p>O Claude é um programa de inteligência artificial da empresa Anthropic. Você escreve o que precisa, em português normal, e ele responde na hora — como uma conversa por mensagem.</p>
+    <p>Serve pra tirar dúvida, ajudar a escrever um texto, resumir algo longo, explicar um assunto, revisar um e-mail, dar ideia, entre outras coisas. Ele não navega na sua vida nem sabe nada sobre você além do que você contar na conversa.</p>
+  </section>
+
+  <section id="comecar">
+    <span class="section-tag">Como começar</span>
+    <h2>Criar sua conta</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="step-num">1</span>
+        <p>Acesse <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> no navegador do computador ou celular.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">2</span>
+        <p>Clique em <b>"Sign up"</b> (criar conta). Pode entrar com e-mail ou com sua conta Google — o que for mais rápido pra você.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">3</span>
+        <p>Confirme seu e-mail se for pedido. Pronto, já dá pra usar. A versão gratuita é suficiente pra começar.</p>
+      </div>
+      <div class="step">
+        <span class="step-num">4</span>
+        <p>Tem app pra celular também (Android e iPhone), busque por "Claude" na loja de aplicativos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="tela">
+    <span class="section-tag">A tela principal</span>
+    <h2>Onde fica cada coisa</h2>
+    <div class="grid">
+      <div class="feature">
+        <h3>Caixa de texto</h3>
+        <p>No centro, embaixo. É onde você escreve sua pergunta ou pedido e aperta enviar (ou <kbd>Enter</kbd>).</p>
+      </div>
+      <div class="feature">
+        <h3>Novo chat</h3>
+        <p>Botão pra começar uma conversa do zero, quando o assunto muda completamente.</p>
+      </div>
+      <div class="feature">
+        <h3>Histórico</h3>
+        <p>Na lateral, lista de conversas anteriores. Clique pra voltar e continuar de onde parou.</p>
+      </div>
+      <div class="feature">
+        <h3>Anexar arquivo</h3>
+        <p>Ícone de clipe perto da caixa de texto. Dá pra mandar foto, PDF, documento, planilha.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="conversar">
+    <span class="section-tag">Como conversar</span>
+    <h2>Só escreva como você fala</h2>
+    <ul class="tip-list">
+      <li>Não precisa formalidade nem comando especial. "Me ajuda a escrever uma mensagem pedindo folga" já funciona.</li>
+      <li>Se a resposta não ficou boa, não precisa recomeçar — diga o que quer diferente na mesma conversa: "mais curto", "mais formal", "troca esse trecho".</li>
+      <li>A conversa lembra o que foi dito antes, dentro do mesmo chat. Se abrir um chat novo, ele não sabe o que foi falado no outro.</li>
+      <li>Quanto mais contexto você der (pra quem é, pra que serve, qual tom), melhor a resposta.</li>
+    </ul>
+  </section>
+
+  <section id="recursos">
+    <span class="section-tag">Recursos úteis</span>
+    <h2>Coisas que valem conhecer</h2>
+    <div class="grid">
+      <div class="feature">
+        <h3>Enviar arquivo</h3>
+        <p>Mande um PDF, foto ou documento e peça pra resumir, explicar ou revisar o conteúdo.</p>
+      </div>
+      <div class="feature">
+        <h3>Projects</h3>
+        <p>Uma pasta pra organizar conversas de um mesmo assunto — por exemplo, "Viagem" ou "Trabalho". Mantém tudo junto e com o mesmo contexto.</p>
+      </div>
+      <div class="feature">
+        <h3>Voz e câmera (no app)</h3>
+        <p>No aplicativo do celular dá pra falar em vez de digitar, e mostrar algo pela câmera.</p>
+      </div>
+      <div class="feature">
+        <h3>Copiar resposta</h3>
+        <p>Ícone ao lado de cada resposta pra copiar o texto e colar onde precisar.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cuidados">
+    <span class="section-tag">Vale lembrar</span>
+    <div class="care">
+      <h2>Cuidados básicos</h2>
+      <ul>
+        <li>Não digite senha, número de cartão ou documento dentro da conversa.</li>
+        <li>O Claude pode errar ou inventar detalhes com confiança — em algo importante (remédio, contrato, valor), confira em outra fonte antes de confiar de olhos fechados.</li>
+        <li>Ele não substitui médico, advogado ou contador — pode ajudar a entender um assunto, mas não decide por você.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="duvidas">
+    <span class="section-tag">Perguntas rápidas</span>
+    <h2>Dúvidas comuns</h2>
+    <div class="faq">
+      <details open>
+        <summary>É de graça?</summary>
+        <p class="faq-a">Sim, tem versão gratuita com uso diário limitado. Se passar do limite, o próprio Claude avisa e diz quando volta a liberar.</p>
+      </details>
+      <details>
+        <summary>Preciso saber de tecnologia ou programação?</summary>
+        <p class="faq-a">Não. É só escrever normalmente, como numa conversa de mensagem.</p>
+      </details>
+      <details>
+        <summary>Funciona no celular?</summary>
+        <p class="faq-a">Sim, pelo navegador ou pelo aplicativo (Android e iPhone).</p>
+      </details>
+      <details>
+        <summary>As conversas somem?</summary>
+        <p class="faq-a">Não, ficam salvas no histórico até você apagar. Cada conversa pode ser vista, renomeada ou excluída.</p>
+      </details>
+      <details>
+        <summary>E se eu não gostar da resposta?</summary>
+        <p class="faq-a">Pode pedir de outro jeito na mesma conversa, ou reescrever a pergunta com mais detalhe. Não precisa acertar de primeira.</p>
+      </details>
+    </div>
+  </section>
+
+  <footer>
+    <p>Guia feito pra começar sem sustos. Qualquer dúvida, é só perguntar direto pro Claude — inclusive "como eu uso você?" já funciona.</p>
+  </footer>
+
+</div>
+</body>
+</html>
