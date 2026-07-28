@@ -131,6 +131,11 @@ p:last-child{margin-bottom:0;}
 .tip-list li{display:grid; grid-template-columns:22px 1fr; gap:12px; font-size:16px;}
 .tip-list li::before{content:"·"; font-family:var(--sans); font-weight:800; color:var(--accent);}
 
+.callout-clinical{
+  background:var(--accent-soft); border-radius:12px; padding:16px 20px;
+  font-size:14.5px; color:var(--accent-ink); margin-top:18px;
+}
+
 /* care callout */
 .care{
   background:var(--accent-soft); border-radius:12px; padding:24px 26px;
@@ -178,6 +183,7 @@ kbd{
       <a href="#comecar">Começar</a>
       <a href="#tela">A tela</a>
       <a href="#pedir">Como pedir</a>
+      <a href="#enfermagem">No trabalho</a>
       <a href="#recursos">Recursos</a>
       <a href="#cuidados">Cuidados</a>
       <a href="#duvidas">Dúvidas</a>
@@ -329,6 +335,53 @@ kbd{
         <p>Ícone ao lado de cada resposta pra copiar o texto e colar onde precisar.</p>
       </div>
     </div>
+  </section>
+
+  <section id="enfermagem">
+    <span class="section-tag">No seu trabalho</span>
+    <h2>Fluxograma e conteúdo de enfermagem</h2>
+    <p>Pra esses dois usos, dá pra pedir praticamente do mesmo jeito de sempre — só vale ser específica no formato que você precisa depois (Word, PowerPoint, cartaz, texto pra imprimir).</p>
+    <div class="grid">
+      <div class="feature">
+        <h3>Montar um fluxograma</h3>
+        <p>Descreva o processo e peça os passos numerados, em ordem, com as decisões ("se sim / se não"). Depois é só copiar pra um editor de fluxograma (Word, PowerPoint, Canva) e montar as caixinhas.</p>
+      </div>
+      <div class="feature">
+        <h3>Revisar um fluxograma que já existe</h3>
+        <p>Mande a foto ou o PDF do fluxograma e peça pra apontar passo faltando, ordem confusa ou trecho pouco claro — antes de você aplicar no protocolo oficial.</p>
+      </div>
+      <div class="feature">
+        <h3>Material educativo</h3>
+        <p>Cartaz, orientação de alta, folheto pra paciente — peça linguagem simples, sem termo técnico, tom acolhedor. Diga o público (paciente, família, equipe).</p>
+      </div>
+      <div class="feature">
+        <h3>Resumir protocolo ou artigo</h3>
+        <p>Mande o PDF e peça resumo em tópicos, focando no que muda na prática ou no que é diferente do protocolo atual.</p>
+      </div>
+    </div>
+    <div class="compare-list" style="margin-top:16px;">
+      <div class="compare-pair">
+        <div class="compare-side vago">
+          <span class="compare-label">Vago</span>
+          <p>"me ajuda com um fluxograma de admissão"</p>
+        </div>
+        <div class="compare-side claro">
+          <span class="compare-label">Direto</span>
+          <p>"monta os passos numerados de um fluxograma de admissão do paciente, do acolhimento até a internação, com os pontos de decisão. Depois eu monto visualmente no PowerPoint"</p>
+        </div>
+      </div>
+      <div class="compare-pair">
+        <div class="compare-side vago">
+          <span class="compare-label">Vago</span>
+          <p>"escreve algo sobre curativo pro paciente"</p>
+        </div>
+        <div class="compare-side claro">
+          <span class="compare-label">Direto</span>
+          <p>"escreve uma orientação de alta sobre cuidado com curativo em casa, linguagem simples pra família, sem termo técnico, no máximo 6 frases"</p>
+        </div>
+      </div>
+    </div>
+    <div class="callout-clinical">Conteúdo clínico sempre confere com o protocolo oficial da instituição antes de aplicar. O Claude ajuda a organizar e deixar mais claro, mas não substitui a validação técnica.</div>
   </section>
 
   <section id="cuidados">
