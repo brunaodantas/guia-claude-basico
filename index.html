@@ -164,10 +164,19 @@ details[open] summary{color:var(--accent-ink);}
 
 footer{padding:40px 0 60px;}
 footer p{font-family:var(--sans); font-size:13px; color:var(--muted);}
-kbd{
+kbd, code{
   font-family:var(--mono); font-size:13px; background:var(--accent-soft);
   color:var(--accent-ink); padding:2px 7px; border-radius:5px;
 }
+
+/* atalhos / comandos */
+.cmd-example{
+  background:var(--surface); border:1px solid var(--line); border-radius:12px;
+  padding:16px 20px; margin:18px 0 24px;
+}
+.cmd-example p{font-size:15px; margin:0;}
+.cmd-items{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+.cmd-items li{font-size:14.5px; color:var(--ink); display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;}
 
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
@@ -187,6 +196,7 @@ kbd{
       <a href="#recursos">Recursos</a>
       <a href="#cuidados">Cuidados</a>
       <a href="#duvidas">Dúvidas</a>
+      <a href="#comandos">Atalhos</a>
     </div>
   </div>
 </nav>
@@ -419,6 +429,176 @@ kbd{
       <details>
         <summary>E se eu não gostar da resposta?</summary>
         <p class="faq-a">Pode pedir de outro jeito na mesma conversa, ou reescrever a pergunta com mais detalhe. Não precisa acertar de primeira.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="comandos">
+    <span class="section-tag">Atalhos prontos</span>
+    <h2>100 frases-modelo pra usar no dia a dia</h2>
+    <p>Não são botões nem comando real do Claude — são frases prontas, um lembrete rápido do que pedir. Troca o que está entre <code>[colchetes]</code> pelo seu conteúdo e cola na caixa de texto, como uma mensagem normal.</p>
+    <div class="cmd-example">
+      <span class="compare-label">Exemplo</span>
+      <p>Copia <code>/RESUMIR [email]</code>, troca <code>[email]</code> pelo texto do e-mail que você quer resumir, e envia.</p>
+    </div>
+
+    <div class="faq">
+      <details>
+        <summary>1 · E-mail &amp; mensagens</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/RESUMIR [email]</code> — resumo rápido</li>
+            <li><code>/RESPONDER [email]</code> — resposta clara</li>
+            <li><code>/REJEITAR [email]</code> — recusa educada</li>
+            <li><code>/CURTIR [email]</code> — mais conciso</li>
+            <li><code>/ESTENDER [email]</code> — mais detalhes</li>
+            <li><code>/CLAREAR [email]</code> — mais claro</li>
+            <li><code>/TOM [tom] [email]</code> — ajustar tom</li>
+            <li><code>/AGRADECER [email]</code> — agradecer</li>
+            <li><code>/CONFIRMAR [email]</code> — confirmar</li>
+            <li><code>/COBRAR [email]</code> — follow-up</li>
+            <li><code>/INTRO [pessoa]</code> — apresentação</li>
+            <li><code>/FIM [mensagem]</code> — encerrar bem</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>2 · Escrever &amp; editar</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/CORRIGIR [texto]</code> — corrigir erros</li>
+            <li><code>/REESCREVER [texto]</code> — reescrever</li>
+            <li><code>/CLAREAR [texto]</code> — tornar claro</li>
+            <li><code>/RESUMIR [texto]</code> — resumir</li>
+            <li><code>/EXPANDIR [texto]</code> — adicionar detalhes</li>
+            <li><code>/TOM [tom] [texto]</code> — ajustar tom</li>
+            <li><code>/GERAR [texto]</code> — criar do zero</li>
+            <li><code>/ARGUMENTAR [tese]</code> — argumentar</li>
+            <li><code>/ESTRUTURAR [ideia]</code> — organizar</li>
+            <li><code>/TITULO [texto]</code> — criar título</li>
+            <li><code>/ABSTRATO [texto]</code> — abstrato</li>
+            <li><code>/TLDR [texto]</code> — versão ultra curta</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>3 · Pensar &amp; decidir</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/PRÓS E CONTRAS [decisão]</code> — avaliar</li>
+            <li><code>/DECIDIR [opções]</code> — decisão guiada</li>
+            <li><code>/CENÁRIOS [situação]</code> — cenários</li>
+            <li><code>/RISCO [decisão]</code> — riscos envolvidos</li>
+            <li><code>/OPORTUNIDADES [situação]</code> — oportunidades</li>
+            <li><code>/PONTO CEGO [situação]</code> — pontos cegos</li>
+            <li><code>/PERSPECTIVAS [tema]</code> — ver diferente</li>
+            <li><code>/CRÍTICO [ideia]</code> — análise crítica</li>
+            <li><code>/VALE A PENA [opção]</code> — vale a pena?</li>
+            <li><code>/SE...ENTÃO [situação]</code> — hipóteses</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>4 · Aprender &amp; entender</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/EXPLICAR [tópico]</code> — explicar simples</li>
+            <li><code>/EXEMPLO [tópico]</code> — exemplo prático</li>
+            <li><code>/DEFINIR [termo]</code> — definir conceito</li>
+            <li><code>/COMPARAR [A vs B]</code> — comparar</li>
+            <li><code>/ANALOGIA [conceito]</code> — analogia</li>
+            <li><code>/MITO [tópico]</code> — esclarecer mito</li>
+            <li><code>/CURIOSO [tópico]</code> — fatos curiosos</li>
+            <li><code>/COMO [funciona]</code> — passo a passo</li>
+            <li><code>/RESUMO [texto]</code> — resumo completo</li>
+            <li><code>/FLASHCARDS [tópico]</code> — fichas</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>5 · Planejar &amp; organizar</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/PLANO [objetivo]</code> — plano de ação</li>
+            <li><code>/CHECKLIST [tarefa]</code> — checklist</li>
+            <li><code>/CRONOGRAMA [projeto]</code> — cronograma</li>
+            <li><code>/PRIORIDADES [semana]</code> — prioridades</li>
+            <li><code>/ROTINA [objetivo]</code> — rotina diária</li>
+            <li><code>/HÁBITOS [objetivo]</code> — criar hábitos</li>
+            <li><code>/MATRIZ [tarefa]</code> — urgência x impacto</li>
+            <li><code>/ORÇAMENTO [meta]</code> — orçamento</li>
+            <li><code>/PASSOAPASSO [tarefa]</code> — passo a passo</li>
+            <li><code>/REVISAR [plano]</code> — revisar plano</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>6 · Brainstorm</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/IDEIAS20 [tema]</code> — 20 ideias</li>
+            <li><code>/VARIAÇÕES [ideia]</code> — variações</li>
+            <li><code>/NOMES [projeto/marca]</code> — nomes</li>
+            <li><code>/SLOGANS [marca]</code> — slogans</li>
+            <li><code>/SOLUÇÕES [problema]</code> — soluções</li>
+            <li><code>/PERGUNTAS [tema]</code> — perguntas chave</li>
+            <li><code>/ALTERNATIVAS [ideia]</code> — alternativas</li>
+            <li><code>/MELHORIAS [produto]</code> — melhorias</li>
+            <li><code>/COMBINAÇÕES [A + B]</code> — combinações</li>
+            <li><code>/ASSUNTOS [tema]</code> — tópicos relacionados</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>7 · Trabalho &amp; carreira</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/ENTREVISTA [cargo]</code> — perguntas</li>
+            <li><code>/CV [cargo]</code> — melhorar currículo</li>
+            <li><code>/CARTA [cargo/empresa]</code> — cover letter</li>
+            <li><code>/NEGOCIAR [salário]</code> — negociar</li>
+            <li><code>/FEEDBACK [contexto]</code> — dar feedback</li>
+            <li><code>/DELEGAR [tarefa]</code> — delegar melhor</li>
+            <li><code>/OBJETIVOS [meta]</code> — metas SMART</li>
+            <li><code>/PLANO90 [objetivo]</code> — plano 90 dias</li>
+            <li><code>/DESENVOLVER [habilidade]</code> — plano</li>
+            <li><code>/LIDERAR [equipe]</code> — liderar melhor</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>8 · Conteúdo &amp; redes sociais</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/IDEIA [nicho]</code> — ideias de conteúdo</li>
+            <li><code>/PAUTA [tema]</code> — pauta de post</li>
+            <li><code>/CAPTION [tema]</code> — legenda pra rede social</li>
+            <li><code>/THREAD [ideia]</code> — sequência de posts</li>
+            <li><code>/HOOK [tema]</code> — gancho forte</li>
+            <li><code>/TITULO [tema]</code> — títulos chamativos</li>
+            <li><code>/HASHTAGS [tema]</code> — hashtags</li>
+            <li><code>/RASCUNHO [tema]</code> — rascunho rápido</li>
+            <li><code>/CARROSSEL [tema]</code> — roteiro de carrossel</li>
+            <li><code>/TLDR [conteúdo]</code> — resumo curto</li>
+          </ul>
+        </div>
+      </details>
+      <details>
+        <summary>9 · Reuniões &amp; notas</summary>
+        <div class="faq-a">
+          <ul class="cmd-items">
+            <li><code>/REUNIÃONOTAS [transcrição]</code> — notas</li>
+            <li><code>/AÇÕES [reunião]</code> — ações e donos</li>
+            <li><code>/RESUMO [reunião]</code> — resumo executivo</li>
+            <li><code>/DECISÕES [reunião]</code> — decisões</li>
+            <li><code>/PRÓXIMOS PASSOS [reunião]</code> — próximos passos</li>
+            <li><code>/AGENDA [reunião]</code> — criar agenda</li>
+            <li><code>/PREP [reunião]</code> — preparar reunião</li>
+            <li><code>/FEEDBACK [reunião]</code> — coletar feedback</li>
+            <li><code>/TLDR [reunião]</code> — resumo curto</li>
+            <li><code>/FOLLOW-UP [reunião]</code> — follow-up</li>
+          </ul>
+        </div>
       </details>
     </div>
   </section>
